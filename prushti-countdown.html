@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Happy Birthday Prushti 🌹</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --rose: #c0546a;
+    --rose-light: #f7dde4;
+    --rose-dark: #8a3248;
+    --gold: #b8902a;
+    --gold-light: #f9f0db;
+    --cream: #fdf8f2;
+    --deep: #2e1420;
+    --petal1: #e8a0b0;
+    --petal2: #d4667c;
+    --petal3: #f2c8d2;
+    --white: #ffffff;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  .petals-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .petal { position: absolute; border-radius: 60% 40% 60% 40%; opacity: 0; animation: petalfall linear infinite; }
+  @keyframes petalfall {
+    0%   { transform: translateY(-40px) rotate(0deg) scale(1); opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(108vh) rotate(540deg) scale(.7); opacity: 0; }
+  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes heartbeat { 0%,100%{transform:scale(1);} 40%{transform:scale(1.2);} 60%{transform:scale(1.09);} }
+  @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
+  @keyframes shimmer { 0%,100%{opacity:.5;} 50%{opacity:1;} }
+  @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.04);} }
+  @keyframes confettiDrop { 0%{transform:translateY(0) rotate(0deg);opacity:1;} 100%{transform:translateY(280px) rotate(600deg);opacity:0;} }
+  @keyframes numFlip { 0%{opacity:0;transform:translateY(-12px);} 100%{opacity:1;transform:translateY(0);} }
+
+  .page { position:relative; z-index:1; max-width:480px; margin:0 auto; padding:0 18px 80px; }
+
+  /* HERO */
+  .hero { text-align:center; padding:52px 10px 32px; animation:fadeUp .9s ease both; }
+  .eyebrow { font-family:'Cinzel',serif; font-size:10px; letter-spacing:6px; text-transform:uppercase; color:var(--gold); margin-bottom:18px; display:block; animation:shimmer 3s ease-in-out infinite; }
+  .star-row { font-size:14px; letter-spacing:10px; color:var(--gold); margin-bottom:20px; animation:shimmer 2.5s ease-in-out infinite; }
+  .hero-name { font-size:clamp(36px,10vw,60px); font-weight:300; font-style:italic; line-height:1.12; margin-bottom:8px; }
+  .hero-name .accent { color:var(--rose); }
+  .hero-sub { font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:32px; }
+  .divider { display:flex; align-items:center; gap:14px; max-width:240px; margin:0 auto 32px; }
+  .div-line { flex:1; height:.5px; background:linear-gradient(to right,transparent,var(--gold) 40%,transparent); }
+  .div-heart { color:var(--rose); font-size:20px; animation:heartbeat 2s ease-in-out infinite; line-height:1; }
+
+  /* COUNTDOWN BOX */
+  .countdown-section { margin-bottom:24px; animation:fadeUp .9s .2s ease both; opacity:0; animation-fill-mode:forwards; }
+  .countdown-card {
+    background:var(--white);
+    border:0.5px solid rgba(192,84,106,.2);
+    border-radius:20px;
+    padding:28px 20px 24px;
+    text-align:center;
+  }
+  .cd-label { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:22px; }
+  .cd-grid { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+  .cd-unit { display:flex; flex-direction:column; align-items:center; min-width:64px; }
+  .cd-num {
+    font-family:'Cinzel',serif;
+    font-size:clamp(32px,9vw,52px);
+    font-weight:600;
+    color:var(--rose);
+    line-height:1;
+    background:var(--rose-light);
+    border-radius:12px;
+    width:72px; height:72px;
+    display:flex; align-items:center; justify-content:center;
+    border:0.5px solid rgba(192,84,106,.18);
+    animation:pulse 2s ease-in-out infinite;
+    transition:all .3s;
+  }
+  .cd-unit:nth-child(2) .cd-num { animation-delay:.2s; }
+  .cd-unit:nth-child(3) .cd-num { animation-delay:.4s; }
+  .cd-unit:nth-child(4) .cd-num { animation-delay:.6s; }
+  .cd-sep { font-size:28px; color:var(--gold); line-height:72px; font-weight:300; opacity:.6; }
+  .cd-tag { font-family:'Cinzel',serif; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-top:8px; opacity:.8; }
+  .cd-msg { margin-top:20px; font-size:15px; font-style:italic; color:var(--rose); font-weight:300; min-height:24px; }
+
+  /* BIRTHDAY MODE */
+  .bday-banner {
+    display:none;
+    background:linear-gradient(135deg,#fff5f7,var(--rose-light));
+    border:0.5px solid rgba(192,84,106,.25);
+    border-radius:20px;
+    padding:32px 24px;
+    text-align:center;
+    animation:fadeUp .8s ease both;
+  }
+  .bday-banner.show { display:block; }
+  .bday-big { font-size:clamp(28px,8vw,48px); font-style:italic; font-weight:300; color:var(--rose); line-height:1.2; margin-bottom:10px; }
+  .bday-sub { font-family:'Cinzel',serif; font-size:10px; letter-spacing:5px; color:var(--gold); text-transform:uppercase; }
+
+  /* MESSAGE CARD */
+  .card { background:var(--white); border:.5px solid rgba(192,84,106,.18); border-radius:18px; padding:30px 26px; margin-bottom:18px; position:relative; overflow:hidden; }
+  .card-quote { position:absolute; top:8px; left:16px; font-size:72px; color:var(--rose-light); font-family:Georgia,serif; line-height:1; pointer-events:none; }
+  .card-label { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:16px; }
+  .card-text { font-size:16.5px; line-height:1.95; color:var(--deep); text-align:center; font-style:italic; font-weight:300; position:relative; z-index:1; }
+
+  /* CUSTOM MSG */
+  .section { animation:fadeUp .9s .5s ease both; opacity:0; animation-fill-mode:forwards; margin-bottom:18px; }
+  .section-title { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:14px; }
+  textarea { width:100%; min-height:90px; border:.5px solid rgba(192,84,106,.28); border-radius:14px; padding:14px 16px; font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--deep); background:var(--white); resize:vertical; outline:none; transition:border-color .2s; -webkit-appearance:none; }
+  textarea:focus { border-color:var(--rose); }
+  .btn { margin-top:10px; width:100%; padding:13px; background:var(--rose); color:#fff; border:none; border-radius:12px; font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:background .2s,transform .1s; }
+  .btn:active { background:var(--rose-dark); transform:scale(.97); }
+  .saved-display { display:none; margin-top:14px; font-size:16px; font-style:italic; line-height:1.85; text-align:center; color:var(--deep); background:var(--white); border:.5px solid rgba(192,84,106,.18); border-radius:14px; padding:18px 20px; }
+  .saved-display.show { display:block; }
+
+  /* WISHES */
+  .wish { background:var(--gold-light); border:.5px solid rgba(184,144,42,.22); border-radius:14px; padding:16px 18px; margin-bottom:10px; display:flex; align-items:flex-start; gap:12px; }
+  .wish-icon { font-size:22px; flex-shrink:0; animation:floatY 3s ease-in-out infinite; }
+  .wish-text { font-size:15px; line-height:1.75; font-style:italic; font-weight:300; color:var(--deep); }
+
+  /* FOOTER */
+  .footer { text-align:center; padding:32px 10px 10px; animation:fadeUp .9s .8s ease both; opacity:0; animation-fill-mode:forwards; }
+  .footer-msg { font-size:20px; font-style:italic; color:var(--rose); margin-bottom:6px; font-weight:300; }
+  .footer-sign { font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:var(--gold); text-transform:uppercase; }
+
+  .s1{animation:fadeUp .9s .3s ease both;opacity:0;animation-fill-mode:forwards;}
+  .s2{animation:fadeUp .9s .45s ease both;opacity:0;animation-fill-mode:forwards;}
+  .s3{animation:fadeUp .9s .6s ease both;opacity:0;animation-fill-mode:forwards;}
+  .s4{animation:fadeUp .9s .75s ease both;opacity:0;animation-fill-mode:forwards;}
+
+  .confetti-piece { position:fixed; width:9px; height:9px; border-radius:2px; pointer-events:none; z-index:999; animation:confettiDrop 2s ease forwards; }
+</style>
+</head>
+<body>
+
+<div class="petals-bg" id="petals"></div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow">✦ &nbsp; A Special Celebration &nbsp; ✦</span>
+    <div class="star-row">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <h1 class="hero-name">For My Love,<br><span class="accent">Prushti</span></h1>
+    <p class="hero-sub">Mihir Thummar</p>
+    <div class="divider">
+      <div class="div-line"></div>
+      <div class="div-heart">♥</div>
+      <div class="div-line"></div>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-section">
+    <div class="countdown-card" id="cdCard">
+      <p class="cd-label">✦ &nbsp; Countdown to 30th June &nbsp; ✦</p>
+      <div class="cd-grid">
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-days">--</div>
+          <div class="cd-tag">Days</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-hours">--</div>
+          <div class="cd-tag">Hours</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-mins">--</div>
+          <div class="cd-tag">Mins</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-secs">--</div>
+          <div class="cd-tag">Secs</div>
+        </div>
+      </div>
+      <p class="cd-msg" id="cd-msg">Every second brings us closer to your special day 🌹</p>
+    </div>
+
+    <!-- Birthday mode banner (hidden until the day) -->
+    <div class="bday-banner" id="bdayBanner">
+      <div class="bday-big">🎉 Happy Birthday,<br>Prushti! 🌹</div>
+      <p class="bday-sub">Your day has finally arrived ✦</p>
+    </div>
+  </div>
+
+  <!-- LOVE MESSAGE -->
+  <div class="card s1">
+    <div class="card-quote">❝</div>
+    <p class="card-label">A Message From the Heart</p>
+    <p class="card-text" id="mainMsg">
+      Prushti, every day I count down is a day closer to celebrating the most wonderful person in my life.
+      You make every moment magical, every day brighter.
+      I cannot wait to make your birthday as special as you are to me. ♥
+    </p>
+  </div>
+
+  <!-- WISHES -->
+  <div class="section s3">
+    <p class="section-title">✦ Birthday Wishes ✦</p>
+    <div class="wish">
+      <div class="wish-icon">🌹</div>
+      <div class="wish-text">May every dream you hold dear bloom into reality, as beautiful as you are inside and out.</div>
+    </div>
+    <div class="wish">
+      <div class="wish-icon">✨</div>
+      <div class="wish-text">May this year bring you boundless joy, love in abundance, and every happiness your heart desires.</div>
+    </div>
+    <div class="wish">
+      <div class="wish-icon">🎂</div>
+      <div class="wish-text">Today the world is brighter because you are in it. Happy birthday, my love.</div>
+    </div>
+    <div class="wish">
+      <div class="wish-icon">💫</div>
+      <div class="wish-text">You are my sunshine on the cloudiest days. Here's to you, forever and always.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="divider">
+      <div class="div-line"></div>
+      <div class="div-heart">♥</div>
+      <div class="div-line"></div>
+    </div>
+    <p class="footer-msg">Forever & Always Yours</p>
+    <p class="footer-sign">with all my love</p>
+  </div>
+
+</div>
+
+<script>
+  // Petals
+  const petalsEl = document.getElementById('petals');
+  const petalColors = ['#e8a0b0','#d4667c','#f2c8d2','#c0546a','#f7dde4','#e07088'];
+  for(let i = 0; i < 26; i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 8 + Math.random()*10;
+    p.style.cssText = `left:${Math.random()*105}%;width:${size}px;height:${size*1.4}px;background:${petalColors[Math.floor(Math.random()*petalColors.length)]};animation-duration:${6+Math.random()*9}s;animation-delay:${Math.random()*10}s;transform:rotate(${Math.random()*360}deg)`;
+    petalsEl.appendChild(p);
+  }
+
+  // Countdown to June 30
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function updateCountdown(){
+    const now = new Date();
+    // Target: June 30 of current or next year
+    let target = new Date(now.getFullYear(), 5, 30, 0, 0, 0); // month 5 = June
+    if(now >= target){
+      // Check if it's literally today (birthday!)
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const tDay  = new Date(now.getFullYear(), 5, 30);
+      if(today.getTime() === tDay.getTime()){
+        // It's her birthday!
+        document.getElementById('cdCard').style.display = 'none';
+        document.getElementById('bdayBanner').classList.add('show');
+        confettiBurst();
+        confettiBurst();
+        return;
+      }
+      // Birthday passed this year, count to next year
+      target = new Date(now.getFullYear()+1, 5, 30, 0, 0, 0);
+    }
+
+    const diff = target - now;
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000)  / 60000);
+    const secs  = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('cd-days').textContent  = pad(days);
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent  = pad(mins);
+    document.getElementById('cd-secs').textContent  = pad(secs);
+
+    // Dynamic message
+    const msgs = [
+      'Every second brings us closer to your special day 🌹',
+      'Counting down with so much love ♥',
+      'Your day is almost here, my love ✨',
+      'Getting more excited with every tick 🌸'
+    ];
+    if(days === 0) document.getElementById('cd-msg').textContent = 'Tomorrow is your big day! 🎉';
+    else if(days <= 3) document.getElementById('cd-msg').textContent = `Only ${days} day${days>1?'s':''} to go! 🌹`;
+    else document.getElementById('cd-msg').textContent = msgs[Math.floor(days/7)%msgs.length];
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Confetti
+  function confettiBurst(){
+    const colors = ['#c0546a','#b8902a','#e8a0b0','#f2c8d2','#ffca28','#d4667c'];
+    for(let i = 0; i < 40; i++){
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.cssText = `left:${10+Math.random()*80}%;top:${10+Math.random()*40}%;background:${colors[Math.floor(Math.random()*colors.length)]};animation-delay:${Math.random()*.5}s;border-radius:${Math.random()>.5?'50%':'3px'}`;
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(), 2600);
+    }
+  }
+
+</script>
+</body>
+</html>
