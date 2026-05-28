@@ -197,7 +197,9 @@
     <div class="card-quote">❝</div>
     <p class="card-label">A Message From the Heart</p>
     <p class="card-text" id="mainMsg">
-      Prushti, the day you were born, the world became a more beautiful place. And the day you became mine, I became the luckiest person alive. Wishing you all the love in the universe. ♥
+      Prushti, every day I count down is a day closer to celebrating the most wonderful person in my life.
+      You make every moment magical, every day brighter.
+      I cannot wait to make your birthday as special as you are to me. ♥
     </p>
   </div>
 
@@ -236,15 +238,18 @@
 </div>
 
 <script>
-  // Petals
+  // Falling Hearts
   const petalsEl = document.getElementById('petals');
-  const petalColors = ['#e8a0b0','#d4667c','#f2c8d2','#c0546a','#f7dde4','#e07088'];
-  for(let i = 0; i < 26; i++){
-    const p = document.createElement('div');
-    p.className = 'petal';
-    const size = 8 + Math.random()*10;
-    p.style.cssText = `left:${Math.random()*105}%;width:${size}px;height:${size*1.4}px;background:${petalColors[Math.floor(Math.random()*petalColors.length)]};animation-duration:${6+Math.random()*9}s;animation-delay:${Math.random()*10}s;transform:rotate(${Math.random()*360}deg)`;
-    petalsEl.appendChild(p);
+  const heartColors = ['#c0546a','#d4667c','#e8a0b0','#f2c8d2','#f7dde4','#a83050','#e07088'];
+  const heartSizes = [10,13,16,20,24,28,32];
+  for(let i = 0; i < 45; i++){
+    const h = document.createElement('div');
+    h.className = 'petal';
+    const size = heartSizes[Math.floor(Math.random()*heartSizes.length)];
+    const color = heartColors[Math.floor(Math.random()*heartColors.length)];
+    h.style.cssText = 'left:'+Math.random()*105+'%;font-size:'+size+'px;width:auto;height:auto;background:none;animation-duration:'+(5+Math.random()*8)+'s;animation-delay:'+(Math.random()*12)+'s;color:'+color+';';
+    h.textContent = '♥';
+    petalsEl.appendChild(h);
   }
 
   // Countdown to June 30
